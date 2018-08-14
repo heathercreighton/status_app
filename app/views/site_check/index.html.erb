@@ -1,42 +1,45 @@
-<center><h1>Litmus Site Check</h1>
-<div class="well">
-<h3>Last Check Results (<%=@last_check.created_at.strftime('%B %e, %Y @ %l:%M %P') %>):</h3>
-<% if @last_check.status == "UP" %>
-	<h4>Status - <span class="green-text"><%= @last_check.status %></span>,
-<% else %>
-	<h4>Status - <span class="red-text"><%= @last_check.status %></span>,
-<% end %>	
+<center><h1>Litmus Site Check</h1></center>
 
- Message - <em><%= @last_check.status_message %></em></h4>
-</div>
-
-
- <div class="container">
-	<h3>Report of previous checks:</h3></center>
 	<% if @status_check.blank? %>
 		<h3> No status to report.</h3>
 	<% else %>
-		<table class="table"></div>
-			<thead>
-				<tr>
-					<th>Status</th>
-					<th>Message</th>
-					<th>Check Time</th>
-				</tr>
-			</thead>
-			<% @status_check.each do |status| %>
-			<tbody>
-			<tr>
-				<% if status.status == "UP" %>
-					<td class="green-text"><h4><%= status.status %></h4></td>
-				<% else %>
-					<td class="red-text"><h4><%= status.status %></h4></td>
-				<% end %>	
-				<td><%= status.status_message %></td>
-				<td><%= status.created_at.strftime('%B %e, %Y @ %l:%M %P') %></td>
-			</tr>	
-			<% end %>
-		</tbody>
-		</table>	
-	<% end %>
-</div>
+		<div class="well">
+			<h3>Last Check Results (<%=@last_check.created_at.strftime('%B %e, %Y @ %l:%M %P') %>):</h3>
+			<% if @last_check.status == "UP" %>
+				<h4>Status - <span class="green-text"><%= @last_check.status %></span>,
+			<% else %>
+				<h4>Status - <span class="red-text"><%= @last_check.status %></span>,
+			<% end %>	
+
+		 Message - <em><%= @last_check.status_message %></em></h4>
+		</div>
+
+
+	 <div class="container">
+			<center><h3>Report of previous checks:</h3></center>
+		
+			<table class="table"></div>
+				<thead>
+					<tr>
+						<th>Status</th>
+						<th>Message</th>
+						<th>Check Time</th>
+					</tr>
+				</thead>
+				<% @status_check.each do |status| %>
+					<tbody>
+						<tr>
+							<% if status.status == "UP" %>
+								<td class="green-text"><h4><%= status.status %></h4></td>
+							<% else %>
+								<td class="red-text"><h4><%= status.status %></h4></td>
+							<% end %>	
+							<td><%= status.status_message %></td>
+							<td><%= status.created_at.strftime('%B %e, %Y @ %l:%M %P') %></td>
+						</tr>	
+					</tbody>
+				<% end %>
+				
+			</table>	
+		<% end %>
+	</div>
